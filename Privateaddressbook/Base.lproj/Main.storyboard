@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PeT-es-ORn" detailTextLabel="9Ke-gJ-ikv" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="UGm-ep-hBh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellID" textLabel="PeT-es-ORn" detailTextLabel="9Ke-gJ-ikv" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="UGm-ep-hBh">
                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UGm-ep-hBh" id="0FS-ql-yuE">
@@ -149,8 +149,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="明细" id="hb6-G4-uTi">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="ibf-pX-TfW"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="ibf-pX-TfW">
+                            <connections>
+                                <action selector="savePerson:" destination="Uud-b2-dv2" id="Hue-ef-aCt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameText" destination="ngH-H8-E24" id="OQF-Vu-ubt"/>
+                        <outlet property="phoneText" destination="bTP-9m-EGo" id="5l4-S2-tZd"/>
+                        <outlet property="titleText" destination="Xi8-9G-BOu" id="hi1-Pg-7pG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48u-nj-Cmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
