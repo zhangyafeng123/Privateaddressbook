@@ -92,9 +92,10 @@ class ListTableViewController: UITableViewController {
             
         } else {
             // 点击添加联系人进入的.
-            vc.completionCallBack = {
+            //循环引用 vc 对 闭包引用，闭包 内引用vc
+            vc.completionCallBack = { [weak vc] in
                 //获取明细控制器的 person
-                guard let p = vc.person else {
+                guard let p = vc?.person else {
                     //为空直接返回
                     return
                 }
