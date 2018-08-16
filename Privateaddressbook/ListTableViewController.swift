@@ -75,8 +75,11 @@ class ListTableViewController: UITableViewController {
         //目的地
         //as! 根据前面的值来判断
         let vc = segue.destination as! DetailTableViewController
+        
         //设置选中的 person indexPath
         //注意 if let 和 guard let 一律使用 as?
+        
+        //如果传递了 indexpath 则是点击 cell 进入的下个界面
         if let indexpath = sender as? IndexPath {
             //indexpath 一定有值
             vc.person = personList[indexpath.row]
@@ -87,6 +90,31 @@ class ListTableViewController: UITableViewController {
                 self.tableView.reloadRows(at: [indexpath], with: UITableViewRowAnimation.automatic)
             }
             
+        } else {
+            // 点击添加联系人进入的.
+            vc.completionCallBack = {
+                //获取明细控制器的 person
+                guard let p = vc.person else {
+                    //为空直接返回
+                    return
+                }
+                //插入到数组顶部
+                self.personList.insert(p, at: 0)
+                //刷新数据
+                self.tableView.reloadData()
+            }
         }
     }
+    
+    //添加联系人
+    
+    @IBAction func addAction(_ sender: UIBarButtonItem) {
+        
+        //执行 segue 跳转界面
+        performSegue(withIdentifier: "list2detail", sender: nil)
+        
+    }
+    
+    
+    
 }

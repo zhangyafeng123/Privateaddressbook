@@ -34,6 +34,10 @@ class DetailTableViewController: UITableViewController {
     }
     
     @IBAction func savePerson(_ sender: UIBarButtonItem) {
+        //判断 person 是否为 nil,如果是就是新建
+        if person == nil {
+            person = Person()
+        }
         //更新 person 的内容
         person?.name = nameText.text
         person?.phone = phoneText.text
