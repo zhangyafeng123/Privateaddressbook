@@ -64,8 +64,22 @@ class ListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        //执行 segue
+        performSegue(withIdentifier: "list2detail", sender: indexPath)
         
     }
    
-
+    //控制器跳转方法
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //目的地
+        //as! 根据前面的值来判断
+        let vc = segue.destination as! DetailTableViewController
+        //设置选中的 person indexPath
+        //注意 if let 和 guard let 一律使用 as?
+        if let indexpath = sender as? IndexPath {
+            //indexpath 一定有值
+            vc.person = personList[indexpath.row]
+        }
+    }
 }
