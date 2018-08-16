@@ -18,6 +18,9 @@ class DetailTableViewController: UITableViewController {
     
     var person: Person?
     
+    var completionCallBack: (()->())?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +34,18 @@ class DetailTableViewController: UITableViewController {
     }
     
     @IBAction func savePerson(_ sender: UIBarButtonItem) {
+        //更新 person 的内容
+        person?.name = nameText.text
+        person?.phone = phoneText.text
+        person?.title = titleText.text
+        //执行闭包回调 在点击保存按钮这个时机，执行一段代码，但是这个代码是在上个界面的
+        completionCallBack?()
+        //返回上个界面
+        // _ 忽略一切不关心的内容
+       _ = navigationController?.popViewController(animated: true)
         
     }
+    
     
    
 

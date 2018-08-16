@@ -80,6 +80,13 @@ class ListTableViewController: UITableViewController {
         if let indexpath = sender as? IndexPath {
             //indexpath 一定有值
             vc.person = personList[indexpath.row]
+            
+            //设置编辑完成的闭包,这段代码是在点击保存的时候调用的
+            vc.completionCallBack = {
+                //刷新指定行
+                self.tableView.reloadRows(at: [indexpath], with: UITableViewRowAnimation.automatic)
+            }
+            
         }
     }
 }
